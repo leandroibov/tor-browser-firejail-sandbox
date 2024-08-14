@@ -16,7 +16,7 @@ executar:
 [tor-ram-jail1] -> configurado firejail que permite ouvir som dos vídeos e músicas etc...
 
 
-[tor-ram-jail12] -> configurado firejail mais seguro, mas mais restrito. Sem som e sem vídeo --nosound --novideo
+[tor-ram-jail2] -> configurado firejail mais seguro, mas mais restrito. Sem som e sem vídeo --nosound --novideo
 
 
 sudo chmod +x tor-ram-jail1 tor-ram-jail2;
