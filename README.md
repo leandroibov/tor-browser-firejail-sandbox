@@ -26,6 +26,9 @@ tor-ram-jail2
 
 ou
 
+dentro da pasta que estão os scripts
+
+
 ./tor-ram-jail1 
 
 ./tor-ram-jail2
