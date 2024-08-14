@@ -1,0 +1,54 @@
+#!/bin/bash
+#tor browser 100% na memória ram impedindo gravação das bridges e usando o firejail
+
+#Mac exemplos
+#0e:e4:27:7e:f0:0f 
+#00:11:a4:14:51:d3 
+#90:55:ae:43:9a:45 
+#18:3f:47:37:38:cb 
+
+#interface de rede = enp2s0 para --net=enp2s0 (mude se a sua for diferente).
+
+echo "";
+echo "############################################################################################################################";
+echo "Aviso: Precisa instalar o tor browser antes onde a pasta tor-browser deve estar em /home/seu_usuario/Downloads/tor-browser/ ou ~/Downloads/tor-browser/ para funcionar";
+echo "Precisa ter instalado o firejail antes - use sudo apt install firejail -y no debian!";
+echo "############################################################################################################################";
+echo "";
+read -rp "Digite o mac desejada para cadastrar no comando firejail para mac spoofing ou não:" mac
+echo "O mac escolhido foi: $mac"
+echo "";
+read -rp "Digite a interface de rede que quer se conectar para cadastrar no comando firejail: " rede
+echo "A interface de rede escolhida foi: $rede"
+echo "";
+DIRETORIO="$HOME/Downloads/tor-browser/"
+# Verifica se o diretório existe
+if [ -d "$DIRETORIO" ]; then
+    echo "Aviso: O diretório '$DIRETORIO' existe."
+else
+    echo "O diretório '$DIRETORIO' não existe. O Tor não vai funcionar, baixe e instale o tor em ~/Downloads do seu linux"
+fi
+echo "cat ~/Downloads/tor-browser/Browser/TorBrowser/Data/Tor/torrc";
+cat ~/Downloads/tor-browser/Browser/TorBrowser/Data/Tor/torrc;
+cp -r ~/Downloads/tor-browser/ /dev/shm;
+echo "";
+echo "############################################################################################################################";
+echo "Executando tor browser na memória ram em failsafe usando o comando firejail ->";
+echo "firejail --noprofile --ipc-namespace --machine-id --novideo --caps.drop=all --private-tmp --net="$rede" --mac="$mac" /dev/shm/tor-browser/Browser/start-tor-browser;";
+echo "comando --private-tmp e --private removidos pois não funciona em /dev/shm";
+echo "############################################################################################################################";
+firejail --noprofile --ipc-namespace --machine-id --novideo --caps.drop=all --private-tmp --net="$rede" --mac="$mac" /dev/shm/tor-browser/Browser/start-tor-browser;
+echo "";
+echo "############################################################################################################################";
+echo "Limpando memória compartilhada (ram, failsafe)";
+echo "############################################################################################################################";
+echo "rm -rf /dev/shm/tor-browser/";
+rm -rf /dev/shm/tor-browser/;
+echo "";
+echo "############################################################################################################################";
+echo "Checando arquivo ~/Downloads/tor-browser/Browser/TorBrowser/Data/Tor/torrc se registrou as bridges usadas na memória ram na pasta original do tor browser em HD, SSD ou Pendrive em ~/Downloads/tor-browser. Veja se a bridge que você mudou usando o tor browser na memória ram em /dev/shm/tor-browser foi registrada, se não, isso significa que os metadados das Bridges foram eliminados ao apagar /dev/shm/tor-browser/ e você está seguro contra levantamento desses dados sensíveis por hackers da análise forense.";
+echo "############################################################################################################################";
+echo "cat ~/Downloads/tor-browser/Browser/TorBrowser/Data/Tor/torrc";
+cat ~/Downloads/tor-browser/Browser/TorBrowser/Data/Tor/torrc;
+echo "";
+echo "";
