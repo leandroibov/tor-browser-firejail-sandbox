@@ -1,6 +1,6 @@
 
 
-# executar:
+# Como executar:
 
 
 
