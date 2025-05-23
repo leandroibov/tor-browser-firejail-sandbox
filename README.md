@@ -1,9 +1,7 @@
 
-###################################################3
 
-executar:
+# executar:
 
-###################################################
 
 
 [tor-ram-jail1] -> configurado firejail que permite ouvir som dos vídeos e músicas etc...
@@ -34,13 +32,11 @@ dentro da pasta que estão os scripts
 
 
 
-###################################################
 
 
-Como operar:
+# Como operar:
 
 
-###################################################
 
 Use o https://github.com/leandroibov/mullvad-browser-firejail-anti-forense/blob/main/mullvad-mac-ram e https://github.com/leandroibov/gerador-de-enderecos-mac/blob/main/mac-random.html para gerar endereços mac spoofados para melhorar a camada de anonimidade e anti metadados.
 
@@ -79,11 +75,9 @@ O objetivo por meio das bridges é impedir que o ISP ou administrador da rede sa
 
 
 
-##################################################################################################
+# Doe monero para nos ajudar: (donate XMR)
 
-Doe monero para nos ajudar: 
-
-87JGuuwXzoMGwQAcSD7cvS7D7iacPpN2f5bVqETbUvCgdEmrPZa12gh5DSiKKRgdU7c5n5x1UvZLj8PQ7AAJSso5CQxgjak
+    87JGuuwXzoMGwQAcSD7cvS7D7iacPpN2f5bVqETbUvCgdEmrPZa12gh5DSiKKRgdU7c5n5x1UvZLj8PQ7AAJSso5CQxgjak
 
 
 
